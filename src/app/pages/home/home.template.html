@@ -1,0 +1,8 @@
+<div class="home-page">
+	<toolbox></toolbox>
+
+	<div class="courses-wrapper">
+		<course *ngFor="let course of courses" [course]="course" (delete)="deleteCourse($event);"></course>
+	</div>
+	<div *ngIf="isLoading">Is loading...</div>
+</div>

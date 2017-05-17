@@ -1,0 +1,37 @@
+[
+  {
+    "id": 7238,
+    "title": "Video Course 1",
+    "duration": "63",
+    "startDate": "2013-01-30T23:51:32+00:00",
+    "description": "description 1"
+  },
+  {
+    "id": 543534,
+    "title": "Video Course 2",
+    "duration": "63",
+    "startDate": "2013-01-30T23:51:32+00:00",
+    "description": "description 1"
+  },
+  {
+    "id": 321321,
+    "title": "Video Course 3",
+    "duration": "63",
+    "startDate": "2013-01-30T23:51:32+00:00",
+    "description": "description 1"
+  },
+  {
+    "id": 23123,
+    "title": "Video Course 4",
+    "duration": "63",
+    "startDate": "2013-01-30T23:51:32+00:00",
+    "description": "description 1"
+  },
+  {
+    "id": 2444,
+    "title": "Bolax adipisicing irure",
+    "duration": "63",
+    "startDate": "2013-10-19T07:38:11+00:00",
+    "description": "description 1"
+  }
+]

@@ -1,0 +1,14 @@
+<div class="button-wrapper container">
+	<div class="navbar-div col-md-3 pull-left" role="search">
+		<div class="input-group add-on">
+			<input class="form-control" [(ngModel)]="searchQuery" placeholder="Search" type="text">
+			<button class="btn btn-secondary" type="submit" (click)="searchCourse(searchQuery.value);">Find</button>
+		</div>
+	</div>
+
+	<button class="btn btn-secondary pull-right col-md-2">
+		<span class="fa fa-plus"></span>
+		Add course
+	</button>
+
+</div>

@@ -1,0 +1,13 @@
+<div class="course row">
+	<div class="course-info col-md-10">
+		<div class="info col-sm-3">{{course.title}}</div>
+		<div class="info col-sm-4">{{course.duration}} min</div>
+		<div class="info col-sm-4">{{course.startDate | date : 'MM/dd/yyyy'}}</div>
+		<div class="info col-sm-3">{{course.description}}</div>
+	</div>
+
+	<div class="course-buttons col-md-2">
+		<button class="btn btn-secondary">Edit Course</button>
+		<button class="btn btn-secondary" (click)="deleteCourse();">Delete</button>
+	</div>
+</div>
