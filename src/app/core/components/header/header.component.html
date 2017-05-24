@@ -4,14 +4,16 @@
 			<span class="fa fa-pencil pull-left" aria-hidden="true"></span>
 			Logo
 		</a>
-
-		<ul class="navbar-nav mr-auto">
+		
+		<ul *ngIf="loggedIn" class="navbar-nav mr-auto">
 			<li class="nav-item active">Courses</li>
 		</ul>
 		
 		<div class="login-buttons navbar-text">
 			<a href="#" class="navbar-link">Mateusz Sepiol</a>
-			<a href="#" class="navbar-link pull-right">Logout</a>
+			<a href="#" class="navbar-link pull-right" *ngIf="loggedIn" (click)="logUserOut($event);">
+				Logout
+			</a>
 		</div>
 
 	</div>

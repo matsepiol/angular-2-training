@@ -18,8 +18,28 @@ export class CoursesService {
 		return this.data;
 	}
 
-	private extractData(res: Response) {
-		let body = res.json();
-		return body.data || { };
+	public createCourse(course): Course[] {
+		this.data.push(course);
+		return this.data;
+	}
+
+	public getCourse(id): Object {
+		let course = this.data.filter( (el) => {
+			return el.id === id;
+		});
+
+		return course;
+	}
+
+	public updateCourse(course): Object {
+		return course;
+	}
+
+	public removeCourse(id): Course[] {
+		this.data = this.data.filter( (el) => {
+			return el.id !== id;
+		});
+
+		return this.data;
 	}
 }

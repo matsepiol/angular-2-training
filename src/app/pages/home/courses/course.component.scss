@@ -5,6 +5,10 @@
     border: 1px solid #000;
     margin: 10px 0;
 
+    &.highlighted {
+        background-color: azure;
+    }
+
     .info {
         float: left;
         margin: 5px 0;

@@ -8,21 +8,34 @@ import { routes } from './home.routes';
 
 // custom components
 import { HomeComponent } from './home.component';
-import { CourseComponent } from './courses/course.component';
+
+//custom directives
+import { courseBorderDirective } from '../../core/directives';
+
+//custion pipes
+import { durationPipe } from '../../core/pipes';
 
 import { ToolboxModule } from '../../core/components/toolbox';
+import { ModalModule } from '../../core/components/modal';
+import { CourseComponent } from './courses/course.component';
 
 @NgModule({
 	declarations: [
 		HomeComponent,
-		CourseComponent
+		CourseComponent,
+		courseBorderDirective,
+		durationPipe
 	],
 	imports: [
 		routes,
 		FormsModule,
 		ToolboxModule,
+		ModalModule,
 		ReactiveFormsModule,
 		CommonModule
+	],
+	exports: [
+		HomeComponent
 	],
 	providers: []
 })

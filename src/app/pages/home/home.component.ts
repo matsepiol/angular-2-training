@@ -1,36 +1,53 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit,
+	OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
-import { CoursesService } from '../../core/services';
+import { CoursesService, AuthService, LoaderService } from '../../core/services';
+
 import { Course } from '../../core/entities';
 
 @Component({
-	selector: 'home',
+	selector: 'home-page',
 	encapsulation: ViewEncapsulation.None,
 	providers: [],
-	styles: [require('./home.styles.scss')],
-	template: require('./home.template.html')
+	styleUrls: ['./home.styles.scss'],
+	templateUrl: './home.template.html',
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class HomeComponent implements OnInit {
+	public isLoading: boolean = false;
 	private courses: Course[];
-	private isLoading: boolean = false;
 
-	constructor(private todoService: CoursesService) {
+	constructor(
+		private coursesService: CoursesService,
+		private loaderService: LoaderService,
+		private authService: AuthService,
+		private ref: ChangeDetectorRef) {
+
 		console.log('Home page constructor');
-
 		this.courses = [];
 	}
 
 	public ngOnInit() {
 		console.log('Home page init');
 
-		this.isLoading = true;
-		this.courses = this.todoService.getCourses();
-		this.isLoading = false;
+		this.courses = this.coursesService.getCourses();
+
+		setTimeout( () => {
+			this.loaderService.displayLoader(false);
+		}, 1000);
 	}
 
 	public deleteCourse($event) {
-		this.courses = this.courses.filter( (course) => {
-			return course.id !== $event.course.id;
-		});
+		this.loaderService.displayLoader(true);
+
+		setTimeout( () => {
+			let courseId = $event.course.id;
+			this.courses = this.coursesService.removeCourse(courseId);
+			this.loaderService.displayLoader(false);
+			this.ref.markForCheck();
+		}, 1000 );
+
 	}
+
 }

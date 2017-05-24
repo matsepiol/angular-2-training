@@ -1,12 +1,14 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
 	selector: 'toolbox',
 	templateUrl: 'toolbox.component.html',
-	styles: [require('./toolbox.component.scss')],
+	styleUrls: ['./toolbox.component.scss'],
 	providers: [],
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class ToolboxComponent {
 	public searchQuery: string;
 

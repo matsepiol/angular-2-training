@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { NglModule } from 'ng-lightning/ng-lightning';
+
 import {
 	NgModule,
 	ApplicationRef
@@ -27,14 +29,18 @@ import { HeaderModule, FooterModule } from './core/components';
 
 // Pages
 import { HomeModule } from './pages/home';
+import { LoginModule } from './pages/login-page';
 
 // Services
 
 import { CoursesService } from './core/services';
+import { AuthService } from './core/services';
+import { LoaderService } from './core/services';
 
 // Application wide providers
 const APP_PROVIDERS = [
-	CoursesService
+	CoursesService,
+	AuthService
 ];
 
 /**
@@ -51,8 +57,10 @@ const APP_PROVIDERS = [
 		HttpModule,
 		RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
 		HeaderModule,
+		HomeModule,
 		FooterModule,
-		HomeModule
+		LoginModule,
+		NglModule
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,

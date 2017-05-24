@@ -1,7 +1,11 @@
 <main-header></main-header>
+<router-outlet></router-outlet>
 
-<main class="container">
-  <router-outlet></router-outlet>
-</main>
+<login-page *ngIf="!loggedIn;"></login-page>
+<home-page *ngIf="loggedIn"></home-page>
+
+<div *ngIf="objLoaderStatus"> 
+      <ngl-spinner size="large" type="brand" container="true"></ngl-spinner>
+</div>
 
 <main-footer></main-footer>
