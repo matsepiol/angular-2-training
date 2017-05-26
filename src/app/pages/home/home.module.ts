@@ -10,10 +10,10 @@ import { routes } from './home.routes';
 import { HomeComponent } from './home.component';
 
 //custom directives
-import { courseBorderDirective } from '../../core/directives';
+import { CourseBorderDirective } from '../../core/directives';
 
 //custion pipes
-import { durationPipe } from '../../core/pipes';
+import { durationPipe, orderByPipe } from '../../core/pipes';
 
 import { ToolboxModule } from '../../core/components/toolbox';
 import { ModalModule } from '../../core/components/modal';
@@ -23,8 +23,9 @@ import { CourseComponent } from './courses/course.component';
 	declarations: [
 		HomeComponent,
 		CourseComponent,
-		courseBorderDirective,
-		durationPipe
+		CourseBorderDirective,
+		durationPipe,
+		orderByPipe
 	],
 	imports: [
 		routes,
@@ -37,7 +38,7 @@ import { CourseComponent } from './courses/course.component';
 	exports: [
 		HomeComponent
 	],
-	providers: []
+	providers: [orderByPipe]
 })
 export class HomeModule {
 	constructor() {

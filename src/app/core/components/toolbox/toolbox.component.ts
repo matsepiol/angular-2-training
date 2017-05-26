@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { CoursesService } from '../../services';
 
 @Component({
 	selector: 'toolbox',
@@ -12,11 +13,11 @@ import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/
 export class ToolboxComponent {
 	public searchQuery: string;
 
-	constructor() {
+	constructor(private courseService: CoursesService, private ref: ChangeDetectorRef) {
 
 	}
 
 	public searchCourse() {
-		console.log(this.searchQuery);
+		this.courseService.sortCoursesByName();
 	}
 }

@@ -2,7 +2,7 @@
 	<div class="navbar-div col-md-3 pull-left" role="search">
 		<div class="input-group add-on">
 			<input class="form-control" [(ngModel)]="searchQuery" placeholder="Search" type="text">
-			<button class="btn btn-secondary" type="submit" (click)="searchCourse(searchQuery.value);">Find</button>
+			<button class="btn btn-secondary" type="submit" (click)="searchCourse(searchQuery?.value);">Find</button>
 		</div>
 	</div>
 

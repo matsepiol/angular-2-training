@@ -17,6 +17,7 @@ import { Course } from '../../core/entities';
 export class HomeComponent implements OnInit {
 	public isLoading: boolean = false;
 	private courses: Course[];
+	private subscription: any;
 
 	constructor(
 		private coursesService: CoursesService,
@@ -31,7 +32,12 @@ export class HomeComponent implements OnInit {
 	public ngOnInit() {
 		console.log('Home page init');
 
-		this.courses = this.coursesService.getCourses();
+		this.subscription = this.coursesService.courses.subscribe((courses) => {
+			this.courses = courses;
+			this.ref.markForCheck();
+		});
+
+		this.coursesService.getCourses();
 
 		setTimeout( () => {
 			this.loaderService.displayLoader(false);

@@ -1,21 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Response, Request, RequestOptions, RequestMethod, Http } from '@angular/http';
 import { Observable } from 'rxjs';
-
-import 'rxjs/add/operator/map';
+import { Observer } from 'rxjs/Observer';
 
 import { Course } from '../../entities';
+import { orderByPipe } from '../../pipes';
 
 @Injectable()
 export class CoursesService {
-
+	public courses: Observable<Course[]>;
 	private data: Course[] = require('../../../../assets/mock-data/courses');
+	private observer: Observer<any>;
 
-	constructor(private http: Http) {
+	constructor(private orderByPipe: orderByPipe) {
+		this.courses = new Observable<Course[]>((observer) => {
+			this.observer = observer;
+		}).share();
 	}
 
-	public getCourses(): Course[] {
-		return this.data;
+	public getCourses() {
+		this.observer.next(this.data);
+	}
+
+	public sortCoursesByName() {
+		this.orderByPipe.transform(this.data, 'title');
 	}
 
 	public createCourse(course): Course[] {
